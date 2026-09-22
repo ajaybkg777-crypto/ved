@@ -1,6 +1,26 @@
-import { Play } from "lucide-react";
+import { Pause, Play } from "lucide-react";
+import { useRef, useState } from "react";
 
 export default function FinalGift() {
+  const videoRef = useRef(null);
+  const [isPlaying, setIsPlaying] = useState(false);
+
+  const toggleVideo = async () => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    if (video.paused || video.ended) {
+      try {
+        await video.play();
+      } catch {
+        setIsPlaying(false);
+      }
+      return;
+    }
+
+    video.pause();
+  };
+
   return (
     <section className="section final-memory-section">
       <div className="final-memory-copy">
@@ -34,6 +54,7 @@ export default function FinalGift() {
 
       <div className="final-video-wrap">
         <video
+          ref={videoRef}
           className="final-video"
           controls
           playsInline
@@ -42,6 +63,9 @@ export default function FinalGift() {
           disablePictureInPicture
           disableRemotePlayback
           onContextMenu={(event) => event.preventDefault()}
+          onPlay={() => setIsPlaying(true)}
+          onPause={() => setIsPlaying(false)}
+          onEnded={() => setIsPlaying(false)}
           aria-label="One last memory for Vaidehi"
         >
           <source src="/media/videos/one-last-memory.mp4" type="video/mp4" />
@@ -49,10 +73,15 @@ export default function FinalGift() {
         </video>
       </div>
 
-      <p className="final-play-prompt">
-        <Play size={16} fill="currentColor" aria-hidden="true" />
-        Press play
-      </p>
+      <button
+        type="button"
+        className="final-play-prompt"
+        onClick={toggleVideo}
+        aria-label={isPlaying ? "Pause the memory video" : "Play the memory video"}
+      >
+        {isPlaying ? <Pause size={16} fill="currentColor" aria-hidden="true" /> : <Play size={16} fill="currentColor" aria-hidden="true" />}
+        {isPlaying ? "Pause video" : "Press play"}
+      </button>
     </section>
   );
 }

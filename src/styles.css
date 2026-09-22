@@ -736,12 +736,25 @@ p { margin: 0; color: var(--muted); }
   align-items: center;
   justify-content: center;
   gap: 8px;
-  margin-top: 18px;
+  width: fit-content;
+  min-height: 42px;
+  margin: 18px auto 0;
+  padding: 0 18px;
+  border: 1px solid rgba(246, 168, 194, .32);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, .06);
   color: #f6a8c2;
   font-size: .78rem;
   font-weight: 900;
   letter-spacing: 0;
   text-transform: uppercase;
+  transition: background .2s ease, border-color .2s ease, color .2s ease, translate .2s ease;
+}
+.final-play-prompt:hover {
+  translate: 0 -2px;
+  border-color: rgba(246, 168, 194, .62);
+  background: rgba(246, 168, 194, .12);
+  color: #fff;
 }
 .final-message .animated-text { max-width: 760px; margin-inline: auto; }
 .final-message strong { display: block; margin-top: 30px; font-family: Caveat, cursive; color: var(--rose); font-size: 2rem; }
