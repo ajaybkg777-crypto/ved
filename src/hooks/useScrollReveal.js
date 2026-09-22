@@ -1,29 +1,32 @@
 import { useEffect } from "react";
 
 const revealSelector = [
-  ".section .eyebrow",
-  ".section .kicker",
-  ".section h1",
-  ".section h2",
-  ".section h3",
-  ".section p",
-  ".section li",
-  ".section figure",
-  ".section img",
-  ".section video",
-  ".section .btn",
-  ".section dl > div",
-  ".section .chapter-origin",
-  ".section .chapter-support",
-  ".section .always-sister",
-  ".section .letter-row",
-  ".section .letter-detail",
-  ".section .vaidehi-complete",
-  ".section .report-panel",
-  ".section .terms-list article",
-  ".section .final-rule",
-  ".section .sister-pass",
-  ".section .final-memory-keepsake",
+  ".welcome-stage > .eyebrow",
+  ".welcome-stage > h2",
+  ".welcome-stage > .btn",
+  ".chapter-letter-heading",
+  ".chapter-origin",
+  ".chapter-support",
+  ".always-sister",
+  ".chapter-letter-footer",
+  ".moment-heading",
+  ".letters-section > .eyebrow",
+  ".letters-section > h2",
+  ".letter-row",
+  ".letter-progress",
+  ".report-panel",
+  ".terms-heading",
+  ".terms-list article",
+  ".final-rule",
+  ".sister-pass",
+  ".promise > .eyebrow",
+  ".promise > h2",
+  ".final-memory-copy",
+  ".final-video-wrap",
+  ".final-play-prompt",
+  ".final-message > .eyebrow",
+  ".final-message > strong",
+  ".final-screen > *",
 ].join(",");
 
 export default function useScrollReveal(enabled) {
@@ -43,7 +46,7 @@ export default function useScrollReveal(enabled) {
               observer.unobserve(entry.target);
             });
           },
-          { threshold: 0.12, rootMargin: "0px 0px -7% 0px" },
+          { threshold: 0.08, rootMargin: "0px 0px -4% 0px" },
         );
 
     const register = (root) => {
@@ -57,11 +60,7 @@ export default function useScrollReveal(enabled) {
         element.dataset.revealReady = "true";
         element.classList.add("scroll-reveal");
         const siblingIndex = [...element.parentElement.children].indexOf(element);
-        element.style.setProperty("--reveal-delay", `${Math.min(siblingIndex % 6, 5) * 65}ms`);
-
-        if (element.matches("h1, h2, h3")) element.classList.add("reveal-heading");
-        if (element.matches("img, video, figure")) element.classList.add("reveal-media");
-        if (element.matches(".btn, button")) element.classList.add("reveal-control");
+        element.style.setProperty("--reveal-delay", `${Math.min(siblingIndex % 4, 3) * 35}ms`);
 
         if (reduceMotion) element.classList.add("is-revealed");
         else observer.observe(element);
