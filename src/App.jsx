@@ -12,6 +12,7 @@ import OnePromise from "./components/OnePromise.jsx";
 import FinalGift from "./components/FinalGift.jsx";
 import FinalMessage from "./components/FinalMessage.jsx";
 import FinalScreen from "./components/FinalScreen.jsx";
+import useScrollReveal from "./hooks/useScrollReveal.js";
 
 const nav = [
   ["Story", "#story"],
@@ -47,6 +48,8 @@ function FloatingNav() {
 
 export default function App() {
   const [entered, setEntered] = useState(false);
+  useScrollReveal(entered);
+
   if (!entered) return <LoadingScreen onEnter={() => setEntered(true)} />;
 
   return (
