@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 760" role="img" aria-label="Cute brother and sister illustration placeholder">
+  <rect width="900" height="760" fill="#FFF7F8"/>
+  <circle cx="452" cy="378" r="260" fill="#F8DCE4"/>
+  <circle cx="294" cy="216" r="28" fill="#E85D83" opacity=".75"/>
+  <circle cx="638" cy="202" r="22" fill="#D6A85F" opacity=".75"/>
+  <path d="M312 304c0-78 62-142 138-142s138 64 138 142v180H312z" fill="#8C543B"/>
+  <circle cx="450" cy="308" r="112" fill="#FFD9C8"/>
+  <path d="M330 286c22-100 206-126 246-10-70 3-124-22-162-58-24 40-52 62-84 68z" fill="#6F402D"/>
+  <circle cx="410" cy="322" r="8" fill="#25191C"/>
+  <circle cx="494" cy="322" r="8" fill="#25191C"/>
+  <path d="M424 372c20 16 42 16 62 0" fill="none" stroke="#B8325A" stroke-width="8" stroke-linecap="round"/>
+  <path d="M330 470h242c64 0 116 52 116 116v66H214v-66c0-64 52-116 116-116z" fill="#E85D83"/>
+  <path d="M188 412c-74-18-116-76-94-132 18-46 77-66 124-37 46 28 58 92 27 142" fill="#17141A"/>
+  <circle cx="184" cy="294" r="82" fill="#FFD6C5"/>
+  <path d="M112 284c12-72 120-100 150-10-54 4-89-10-116-38-10 23-20 38-34 48z" fill="#17141A"/>
+  <circle cx="156" cy="308" r="7" fill="#21181B"/>
+  <circle cx="214" cy="306" r="7" fill="#21181B"/>
+  <path d="M166 352c16 10 34 10 50 0" fill="none" stroke="#B8325A" stroke-width="7" stroke-linecap="round"/>
+  <path d="M90 392h190c48 0 88 40 88 88v124H2V480c0-48 40-88 88-88z" fill="#17141A"/>
+  <path d="M686 288l22-22 22 22 22-22 22 22-66 66z" fill="#E85D83"/>
+  <path d="M246 176l18-18 18 18 18-18 18 18-54 54z" fill="#E85D83"/>
+</svg>
