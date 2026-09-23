@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import { Heart, Menu, X } from "lucide-react";
 import LoadingScreen from "./components/LoadingScreen.jsx";
 import Welcome from "./components/Welcome.jsx";
@@ -48,77 +48,24 @@ function FloatingNav() {
 
 export default function App() {
   const [entered, setEntered] = useState(false);
-  const backgroundAudioRef = useRef(null);
-  const resumeMusicAfterVideoRef = useRef(false);
   useScrollReveal(entered);
 
-  useEffect(() => {
-    const audio = backgroundAudioRef.current;
-    if (!audio) return;
-
-    audio.volume = 0.25;
-    audio.play().catch(() => {
-      // Browsers may wait for the first user interaction before allowing sound.
-    });
-  }, []);
-
-  const enterStory = () => {
-    const audio = backgroundAudioRef.current;
-    if (audio) {
-      audio.volume = 0.25;
-      audio.play().catch(() => {});
-    }
-    setEntered(true);
-  };
-
-  const pauseMusicForVideo = () => {
-    const audio = backgroundAudioRef.current;
-    if (!audio) return;
-
-    resumeMusicAfterVideoRef.current = !audio.paused;
-    audio.pause();
-  };
-
-  const resumeMusicAfterVideo = () => {
-    const audio = backgroundAudioRef.current;
-    if (!audio || !resumeMusicAfterVideoRef.current) return;
-
-    resumeMusicAfterVideoRef.current = false;
-    audio.play().catch(() => {});
-  };
-
-  const backgroundAudio = (
-    <audio ref={backgroundAudioRef} loop preload="auto" aria-hidden="true">
-      <source src="/media/audio/background-memory.mp3" type="audio/mpeg" />
-    </audio>
-  );
-
-  if (!entered) {
-    return (
-      <>
-        {backgroundAudio}
-        <LoadingScreen onEnter={enterStory} />
-      </>
-    );
-  }
+  if (!entered) return <LoadingScreen onEnter={() => setEntered(true)} />;
 
   return (
-    <>
-      {backgroundAudio}
-      <main>
-        <FloatingNav />
-        <Welcome />
-        <Story />
-        <Memories />
-        <VaidehiLetters />
-        <PersonalityReport />
-        <Complaints />
-        <SisterPass />
-        <OnePromise />
-        <FinalGift onVideoPlay={pauseMusicForVideo} onVideoPause={resumeMusicAfterVideo} />
-        <FinalMessage />
-        <FinalScreen />
-      </main>
-    </>
+    <main>
+      <FloatingNav />
+      <Welcome />
+      <Story />
+      <Memories />
+      <VaidehiLetters />
+      <PersonalityReport />
+      <Complaints />
+      <SisterPass />
+      <OnePromise />
+      <FinalGift />
+      <FinalMessage />
+      <FinalScreen />
+    </main>
   );
 }

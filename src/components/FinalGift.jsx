@@ -1,7 +1,7 @@
 import { Pause, Play } from "lucide-react";
 import { useRef, useState } from "react";
 
-export default function FinalGift({ onVideoPlay, onVideoPause }) {
+export default function FinalGift() {
   const videoRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);
 
@@ -63,18 +63,9 @@ export default function FinalGift({ onVideoPlay, onVideoPause }) {
           disablePictureInPicture
           disableRemotePlayback
           onContextMenu={(event) => event.preventDefault()}
-          onPlay={() => {
-            setIsPlaying(true);
-            onVideoPlay?.();
-          }}
-          onPause={() => {
-            setIsPlaying(false);
-            onVideoPause?.();
-          }}
-          onEnded={() => {
-            setIsPlaying(false);
-            onVideoPause?.();
-          }}
+          onPlay={() => setIsPlaying(true)}
+          onPause={() => setIsPlaying(false)}
+          onEnded={() => setIsPlaying(false)}
           aria-label="One last memory for Vaidehi"
         >
           <source src="/media/videos/one-last-memory.mp4" type="video/mp4" />
